@@ -1,0 +1,21 @@
+import express from "express";
+import transferRoutes from "./routes/transfer.routes";
+import productRoutes from "./routes/product.routes";
+import locationRoutes from "./routes/location.routes";
+import inventoryRoutes from "./routes/inventory.routes";
+import { errorHandler } from "./middlewares/errorHandler";
+import cors from "cors"
+
+const app = express();
+
+app.use(express.json());
+app.use(cors());
+
+app.use("/api/transfers", transferRoutes);
+app.use("/api/products", productRoutes);
+app.use("/api/locations", locationRoutes);
+app.use("/api/inventory", inventoryRoutes);
+
+app.use(errorHandler);
+
+export default app;
